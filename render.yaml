@@ -1,6 +1,9 @@
 services:
   - type: web
     name: crypto-news-server
-    env: go
-    buildCommand: go build -o app cmd/main.go && chmod +x app
-    startCommand: sh -c "./app"
+    runtime: docker
+    plan: free
+    envVars:
+      - key: PORT
+        value: '3000'
+    dockerfilePath: ./Dockerfile
