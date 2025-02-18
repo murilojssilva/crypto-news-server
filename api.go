@@ -3,15 +3,15 @@ package main
 import (
 	"crypto-news-server/internal/data"
 	"crypto-news-server/internal/handler"
-	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+// setupRouter inicializa as rotas do servidor
+func setupRouter() *gin.Engine {
 	data.LoadPosts()
 	data.LoadUsers()
-
 	router := gin.Default()
 
 	router.GET("/posts", handler.GetPosts)
@@ -26,6 +26,10 @@ func main() {
 	router.DELETE("/users/:id", handler.DeleteUserById)
 	router.PUT("/users/:id", handler.UpdateUserById)
 
-	log.Println("Server running on http://localhost:3000")
-	router.Run(":3000")
+	return router
+}
+
+// Handler é a função necessária para a Vercel processar requisições
+func Handler(w http.ResponseWriter, r *http.Request) {
+	setupRouter().ServeHTTP(w, r)
 }
