@@ -3,4 +3,4 @@ services:
     name: crypto-news-server
     env: go
     buildCommand: go build -o app cmd/main.go && chmod +x app
-    startCommand: ./app
+    startCommand: sh -c "./app"
