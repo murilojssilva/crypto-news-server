@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "first_name": "Murilo",
+    "last_name": "de Jesus Santos Silva",
+    "email": "murilojssilva@outlook.com",
+    "password": "123456789",
+    "password_confirmation": "123456789",
+    "created_at": "2025-02-18T14:55:29.138027-03:00",
+    "updated_at": "2025-02-18T15:23:36.089145-03:00"
+  }
+]
