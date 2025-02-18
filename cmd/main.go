@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +15,17 @@ func main() {
 	data.LoadUsers()
 
 	router := gin.Default()
+
+	// Configuração de CORS
+	corsConfig := cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000", "http://localhost:3001"}, // Permite essas origens
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"}, // Métodos permitidos
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"}, // Cabeçalhos permitidos
+		AllowCredentials: true,
+	}
+
+	// Aplica o middleware de CORS com a configuração
+	router.Use(cors.New(corsConfig))
 
 	router.GET("/posts", handler.GetPosts)
 	router.GET("/posts/:id", handler.GetPostsById)
