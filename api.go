@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"crypto-news-server/internal/data"
