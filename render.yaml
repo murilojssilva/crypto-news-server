@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: crypto-news-server
+    env: go
+    buildCommand: go build -o app main.go
+    startCommand: ./app
